@@ -10,12 +10,17 @@ logger = logging.getLogger('THE_LOGGER')
 
 
 def make_doc(doc):
+    """
+    This is where you create the document
+    """
     logger.info('This is a logging comment')
     doc.title = "Hello world"
+
     return doc
 
 
-app = Application(FunctionHandler(make_doc))
-server = Server({'/test': app}, port=5000)
-server.start()
-server.run_until_shutdown()
+if __name__ == '__main__':
+    app = Application(FunctionHandler(make_doc))
+    server = Server({'/test': app}, port=5000)
+    server.start()
+    server.run_until_shutdown()
